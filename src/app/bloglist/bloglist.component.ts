@@ -15,5 +15,4 @@ export class BloglistComponent implements OnInit {
     this.blogs=blogs
     // this.blogs=[]
   }
-
 }
