@@ -6,6 +6,9 @@ import { BlogformComponent } from './blogform/blogform.component';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import {MatButtonModule} from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+
 const routes: Routes = [
   {path:"", component:HomeComponent},
   
@@ -15,12 +18,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), BrowserModule, FormsModule],
+  imports: [RouterModule.forRoot(routes), BrowserModule, FormsModule,MatButtonModule,MatIconModule],
   exports: [RouterModule, BloglistComponent, BlogformComponent,HomeComponent],
   declarations: [
     BloglistComponent,
     BlogformComponent,
-    HomeComponent
+    HomeComponent,
   ]
 })
 export class AppRoutingModule { }

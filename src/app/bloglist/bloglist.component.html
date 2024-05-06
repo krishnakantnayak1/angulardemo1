@@ -1,9 +1,9 @@
 <h1>Blogs</h1>
-<div *ngIf="blogs.length==0">
+<div *ngIf="blogss.length==0">
     <div>Be the first to write a blog</div>
 </div>
-<div *ngIf="blogs.length>0">
-    <div *ngFor="let blog of blogs">
+<div *ngIf="blogss.length>0">
+    <div *ngFor="let blog of blogss">
         <div>
             {{blog.title}}
             {{blog.category}}

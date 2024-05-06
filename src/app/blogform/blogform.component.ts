@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { BlogService } from '../service/blog.service';
+import { HttpClient, HttpParams } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-blogform',
@@ -7,6 +9,7 @@ import { BlogService } from '../service/blog.service';
   styleUrl: './blogform.component.css'
 })
 export class BlogformComponent implements OnInit{
+  httpClient=inject(HttpClient);
   constructor(private service:BlogService){
 
   }
@@ -14,7 +17,14 @@ export class BlogformComponent implements OnInit{
   }
   insert(blog:any){
     // alert(blog)
-    this.service.addBlog(blog);
+    //this.service.addBlog(blog);
+    const params = new HttpParams()
+    .set('Content', blog.content)
+    .set('name', blog.name);
+    console.log("params",blog)
+    this.httpClient.post('https://localhost:44320/Blog/Create',{"name":blog.name,"content":blog.content},{headers:{"Content-Type":'application/json'}}).subscribe((v)=>{
+      console.log('new blog',v)
+    })
   }
 
 }

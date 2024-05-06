@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Blog } from '../model/bloghub';
 import { blogs } from '../model/bloglist';
+import { HttpClient } from '@angular/common/http';
+import { BlogService } from '../service/blog.service';
 
 @Component({
   selector: 'app-bloglist',
@@ -8,11 +10,26 @@ import { blogs } from '../model/bloglist';
   styleUrl: './bloglist.component.css'
 })
 export class BloglistComponent implements OnInit {
-  blogs: Blog[] = [];
+  blogss: Blog[] = [];
+  data: object | undefined;
+  httpClient=inject(HttpClient);
+  constructor(private service:BlogService){
 
-  constructor(){}
+  }
+
   ngOnInit() {
-    this.blogs=blogs
-    // this.blogs=[]
+    this.fetchdata()
+    //this.blogs=blogs
+    
+  }
+  fetchdata(){
+    //http://jsonplaceholder.typicode.com/post
+    this.httpClient.get('https://localhost:44320/Blog/').subscribe((d:any)=>{
+      this.blogss=d.map((x: any)=>{
+        return new Blog(x.id,x.name,x.content,'Tech')
+      })
+      
+      console.log(this.blogss);
+    })
   }
 }
