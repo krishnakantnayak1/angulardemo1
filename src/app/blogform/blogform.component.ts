@@ -1,12 +1,14 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { BlogService } from '../service/blog.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 
 @Component({
   selector: 'app-blogform',
   templateUrl: './blogform.component.html',
-  styleUrl: './blogform.component.css'
+  styleUrl: './blogform.component.css',
 })
 export class BlogformComponent implements OnInit{
   httpClient=inject(HttpClient);

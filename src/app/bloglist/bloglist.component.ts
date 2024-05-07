@@ -29,7 +29,6 @@ export class BloglistComponent implements OnInit {
         return new Blog(x.id,x.name,x.content,'Tech')
       })
       
-      console.log(this.blogss);
     })
   }
 }

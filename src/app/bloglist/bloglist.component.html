@@ -2,12 +2,12 @@
 <div *ngIf="blogss.length==0">
     <div>Be the first to write a blog</div>
 </div>
-<div *ngIf="blogss.length>0">
-    <div *ngFor="let blog of blogss">
-        <div>
-            {{blog.title}}
-            {{blog.category}}
-            {{blog.description}}
+<div id="blogs-list" *ngIf="blogss.length>0">
+    <div *ngFor="let blog of blogss" style="min-width: -webkit-fill-available;">
+        <div class="blog-list-item">
+            <div class="blog" id="blog-title"><h2>{{blog.title}}</h2></div>
+            <div class="blog" id="blog-content"><h3>{{blog.description}}</h3></div>
+            
         </div>
     </div>
 </div>

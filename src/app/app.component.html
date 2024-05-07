@@ -6,18 +6,27 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-<main class="main">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<main class="main bg-info h-100 p-4">
   <div class="jumbotron head text-center">
     {{title}}
   </div>
-  <a routerLink=""><button mat-fab extended>
-    Home
-  </button></a>
-  <a routerLink="form">Create a blog</a>
-  <a routerLink="list" href="">Show blogs</a>
-  <a _ngcontent-ng-c2778063796="" mat-flat-button="" href="/list" target="_blank" mat-ripple-loader-class-name="mat-mdc-button-ripple" class="mdc-button mdc-button--unelevated mat-mdc-unelevated-button mat-unthemed mat-mdc-button-base"><span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><span class="mdc-button__label">List</span><span class="mat-mdc-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span><span class="mat-ripple mat-mdc-button-ripple"></span></a>
-
+  <div class="d-flex justify-content-center">
+    <a class="p-3" routerLink=""><button mat-fab extended>
+      Home
+    </button></a>
+    <a class="p-3" routerLink="form"><button mat-fab extended>
+      Create a blog
+    </button></a>
+    <a class="p-3" routerLink="list" href=""><button mat-fab extended>
+      Show blogs
+    </button></a>
+  </div>
+  <div class="">
+    <router-outlet />
+  </div>
+  
+  
 </main>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
@@ -29,4 +38,4 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 
-<router-outlet />
+

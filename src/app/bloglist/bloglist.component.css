@@ -1,0 +1,31 @@
+#blogs-list{
+    height: 500px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+::-webkit-scrollbar-track {
+    background-color: skyblue;
+    border-radius: 6px; /* Non-transparent color */
+}
+::-webkit-scrollbar{
+    width: 12px;
+}::-webkit-scrollbar-thumb {
+    background: linear-gradient(transparent,#69f0ae);
+    border-radius: 6px; /* Non-transparent color */
+}
+.blog-list-item{
+    /* border: 1px solid white; */
+    /* border-radius: 8%; */
+    margin-bottom: 5%;
+    min-width: none;
+    box-shadow: 5px 10px 20px rgba(0,0,0,0.5);
+}
+
+.blog{
+    display: flex;
+    justify-content: center;
+
+}
