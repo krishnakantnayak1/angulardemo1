@@ -4,6 +4,7 @@ export class Blog{
         public title:string,
         public description:string,
         public category:string,
+        public editon:boolean
     ){
         
     }

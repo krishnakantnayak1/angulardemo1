@@ -14,6 +14,7 @@ export class BloglistComponent implements OnInit {
   data: object | undefined;
   pageSize:number=0;
   onpage:number=1;
+  editFlag:boolean[]=[];
   httpClient=inject(HttpClient);
   constructor(private service:BlogService){
 
@@ -35,7 +36,7 @@ export class BloglistComponent implements OnInit {
     //http://jsonplaceholder.typicode.com/post
     this.httpClient.get('https://localhost:44320/Blog/Get?page=1&pageSize=5').subscribe((d:any)=>{
       this.blogss=d.map((x: any)=>{
-        return new Blog(x.id,x.name,x.content,'Tech')
+        return new Blog(x.id,x.name,x.content,'Tech',false)
       })
       
     })
@@ -44,7 +45,7 @@ export class BloglistComponent implements OnInit {
     if(pagenum<=this.pageSize){
       this.httpClient.get(`https://localhost:44320/Blog/Get?page=${pagenum}&pageSize=5`).subscribe((d:any)=>{
       this.blogss=d.map((x: any)=>{
-        return new Blog(x.id,x.name,x.content,'Tech')
+        return new Blog(x.id,x.name,x.content,'Tech',false)
       })
       this.onpage=pagenum;
       
@@ -54,12 +55,20 @@ export class BloglistComponent implements OnInit {
     alert('Please enter a number between 1 and '+this.pageSize)
   }
   deletebyId(id:any){
-    alert(id)
+
     this.httpClient.get(`https://localhost:44320/Blog/Delete?id=${id}`).subscribe((d:any)=>{
       this.blogss=this.blogss.filter((d)=>d.id!=id)
       })
   }
-  editbyId(id:any){
-    alert()
+  editbyId(idx:any){
+        this.blogss[idx].editon=!this.blogss[idx].editon;
+  }
+  updateContent(obj:any){
+    this.httpClient.post('https://localhost:44320/Blog/Edit',{id:obj.id,content:obj.content},{headers:{"Content-Type":'application/json'}}).subscribe((v)=>{
+      if(v){
+        this.blogss[obj.idx].description=obj.content;
+        this.blogss[obj.idx].editon=false;
+      }
+    })
   }
 }

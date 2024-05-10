@@ -3,10 +3,21 @@
     <div>Be the first to write a blog</div>
 </div>
 <div id="blogs-list" *ngIf="pageSize>0">
-    <div *ngFor="let blog of blogss" style="min-width: -webkit-fill-available;">
+    <div *ngFor="let blog of blogss; let i=index" style="min-width: -webkit-fill-available;">
         <div class="blog-list-item">
-            <div class="blog" id="blog-title"><h2>{{blog.title}} <span style="cursor: pointer;" (click)="deletebyId(blog.id)">🗑️</span> <span style="cursor: pointer;" (click)="editbyId(blog.id)">🖊️</span></h2> </div>
+            <div class="blog" id="blog-title"><h2>{{blog.title}} 
+                <span style="cursor: pointer;" (click)="deletebyId(blog.id)">🗑️</span> 
+                <span style="cursor: pointer;" (click)="editbyId(i)">🖊️</span></h2> 
+            </div>
             <div class="blog" id="blog-content"><h3>{{blog.description}}</h3></div>
+
+            <div *ngIf="blog.editon">
+                <mat-form-field style="width: 100%;">
+                    <mat-label >Content</mat-label>
+                    <textarea style="text-align: center;" id="content" name="content" rows="4" cols="50" required matInput #updatedcontent></textarea>
+                  </mat-form-field>
+                  <button style="margin-left: 46%;margin-bottom: 2%;" (click)="updateContent({content:updatedcontent.value,id:blog.id,idx:i})">Update</button>
+            </div>
             
         </div>
     </div>

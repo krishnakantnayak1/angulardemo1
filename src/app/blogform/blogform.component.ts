@@ -17,15 +17,20 @@ export class BlogformComponent implements OnInit{
   }
   ngOnInit() {
   }
-  insert(blog:any){
+  insert(blogform:any){
     // alert(blog)
     //this.service.addBlog(blog);
+    let blog=blogform.value;
     const params = new HttpParams()
     .set('Content', blog.content)
     .set('name', blog.name);
     console.log("params",blog)
     this.httpClient.post('https://localhost:44320/Blog/Create',{"name":blog.name,"content":blog.content},{headers:{"Content-Type":'application/json'}}).subscribe((v)=>{
-      console.log('new blog',v)
+      console.log('new blog',v);
+      if(v){
+        alert('Your Blog published!');
+        blogform.resetForm();
+      }
     })
   }
 

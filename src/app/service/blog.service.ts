@@ -18,7 +18,7 @@ export class BlogService {
     let id=blogs.length;
     blog.id=id+1;
     
-    blogs.unshift(new Blog(blog.id,blog.title,blog.description,blog.category));
+    blogs.unshift(new Blog(blog.id,blog.title,blog.description,blog.category,false));
     console.log(this.blogs)
   }
   // async getPosts() {
